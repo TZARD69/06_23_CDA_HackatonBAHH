@@ -5,11 +5,7 @@ const validateUser = (data, forCreation = true) => {
   const presence = forCreation ? "required" : "optional";
   return Joi.object({
     password: Joi.string().max(255).presence(presence),
-    role: Joi.object()
-      .keys({
-        role: Joi.string().valid("headhunter", "admin", "candidate").required(),
-      })
-      .presence(presence),
+    role: Joi.array().presence(presence),
     first_name: Joi.string().max(255).presence(presence),
     last_name: Joi.string().max(255).presence(presence),
     birth_date: Joi.string()
