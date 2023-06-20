@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 const models = require("../models");
 const validator = require("../services/validators/userValidators");
+const { passwordHasher } = require("../services/passwordHelper");
 
 const browse = (req, res) => {
   models.user
@@ -55,9 +56,10 @@ const edit = (req, res) => {
       });
   }
 };
-const add = (req, res) => {
+const add = async (req, res) => {
   const user = req.body;
 
+  user.password = await passwordHasher(user.password);
   // TODO validations (length, format...)
 
   const { error } = validator.validateUser(user);

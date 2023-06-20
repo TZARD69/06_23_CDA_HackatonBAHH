@@ -1,4 +1,11 @@
 const express = require("express");
+const {
+  verifyToken,
+  verifyTokenById,
+  verifyTokenByRoleHedhunter,
+} = require("./middleware/securityMiddleware");
+
+const { passwordVerification } = require("./services/passwordHelper");
 
 const router = express.Router();
 
@@ -23,7 +30,11 @@ const headhunterControllers = require("./controllers/headhunterControllers");
 router.get("/headhunter", headhunterControllers.browse);
 router.get("/headhunter/:id", headhunterControllers.read);
 router.put("/headhunter/:id", headhunterControllers.edit);
-router.post("/headhunter", headhunterControllers.add);
+router.post(
+  "/headhunter",
+  verifyTokenByRoleHedhunter,
+  headhunterControllers.add
+);
 router.delete("/headhunter/:id", headhunterControllers.destroy);
 
 const jobApplicationsControllers = require("./controllers/jobApplicationsControllers");
@@ -44,10 +55,19 @@ router.delete("/job_offers/:id", jobOffersControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
+const loginController = require("./controllers/authControllers/LoginController");
+
+router.post("/login", loginController);
+
 router.get("/user", userControllers.browse);
 router.get("/user/:id", userControllers.read);
-router.put("/user/:id", userControllers.edit);
+router.put("/user/:id", verifyToken, verifyTokenById, userControllers.edit);
 router.post("/user", userControllers.add);
-router.delete("/user/:id", userControllers.destroy);
+router.delete(
+  "/user/:id",
+  verifyToken,
+  verifyTokenById,
+  userControllers.destroy
+);
 
 module.exports = router;
