@@ -2,9 +2,8 @@ const express = require("express");
 const {
   verifyToken,
   verifyTokenById,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
-  verifyTokenByRoleCandidate,
+  verifyTokenByRoleAdminOrCandidate,
+  verifyTokenByRoleAdminOrHeadhunter,
 } = require("./middleware/securityMiddleware");
 
 const router = express.Router();
@@ -16,22 +15,19 @@ router.get("/candidate/:id", candidateControllers.read);
 router.put(
   "/candidate/:id",
   verifyToken,
-  verifyTokenByRoleCandidate,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrCandidate,
   candidateControllers.edit
 );
 router.post(
   "/candidate",
   verifyToken,
-  verifyTokenByRoleCandidate,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrCandidate,
   candidateControllers.add
 );
 router.delete(
   "/candidate/:id",
   verifyToken,
-  verifyTokenByRoleCandidate,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrCandidate,
   candidateControllers.destroy
 );
 
@@ -42,22 +38,19 @@ router.get("/company/:id", companyControllers.read);
 router.put(
   "/company/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   companyControllers.edit
 );
 router.post(
   "/company",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   companyControllers.add
 );
 router.delete(
   "/company/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   companyControllers.destroy
 );
 
@@ -68,22 +61,19 @@ router.get("/headhunter/:id", headhunterControllers.read);
 router.put(
   "/headhunter/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   headhunterControllers.edit
 );
 router.post(
   "/headhunter",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   headhunterControllers.add
 );
 router.delete(
   "/headhunter/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   headhunterControllers.destroy
 );
 
@@ -94,15 +84,13 @@ router.get("/job_applications/:id", jobApplicationsControllers.read);
 router.put(
   "/job_applications/:id",
   verifyToken,
-  verifyTokenByRoleCandidate,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrCandidate,
   jobApplicationsControllers.edit
 );
 router.post(
   "/job_applications",
   verifyToken,
-  verifyTokenByRoleCandidate,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrCandidate,
   jobApplicationsControllers.add
 );
 router.delete("/job_applications/:id", jobApplicationsControllers.destroy);
@@ -114,22 +102,19 @@ router.get("/job_offers/:id", jobOffersControllers.read);
 router.put(
   "/job_offers/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   jobOffersControllers.edit
 );
 router.post(
   "/job_offers",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   jobOffersControllers.add
 );
 router.delete(
   "/job_offers/:id",
   verifyToken,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleAdmin,
+  verifyTokenByRoleAdminOrHeadhunter,
   jobOffersControllers.destroy
 );
 

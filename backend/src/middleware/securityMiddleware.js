@@ -32,9 +32,12 @@ const verifyTokenById = (req, res, next) => {
   }
 };
 
-const verifyTokenByRoleAdmin = (req, res, next) => {
+const verifyTokenByRoleAdminOrHeadhunter = (req, res, next) => {
   try {
-    if (!req.payload.role.includes("ROLE_ADMIN")) {
+    if (
+      !req.payload.role.includes("ROLE_ADMIN") &&
+      !req.payload.role.includes("ROLE_HEADHUNTER")
+    ) {
       throw new Error("Token payload Role Admin does not match requested role");
     }
     next();
@@ -44,23 +47,12 @@ const verifyTokenByRoleAdmin = (req, res, next) => {
   }
 };
 
-const verifyTokenByRoleHedhunter = (req, res, next) => {
+const verifyTokenByRoleAdminOrCandidate = (req, res, next) => {
   try {
-    if (!req.payload.role.includes("ROLE_HEADHUNTER")) {
-      throw new Error(
-        "Token payload Role Headhunter does not match requested role"
-      );
-    }
-    next();
-  } catch (err) {
-    console.error(err);
-    res.sendStatus(401);
-  }
-};
-
-const verifyTokenByRoleCandidate = (req, res, next) => {
-  try {
-    if (!req.payload.role.includes("ROLE_CANDIDATE")) {
+    if (
+      !req.payload.role.includes("ROLE_ADMIN") &&
+      !req.payload.role.includes("ROLE_CANDIDATE")
+    ) {
       throw new Error(
         "Token payload Role Headhunter does not match requested role"
       );
@@ -75,7 +67,6 @@ const verifyTokenByRoleCandidate = (req, res, next) => {
 module.exports = {
   verifyToken,
   verifyTokenById,
-  verifyTokenByRoleAdmin,
-  verifyTokenByRoleHedhunter,
-  verifyTokenByRoleCandidate,
+  verifyTokenByRoleAdminOrHeadhunter,
+  verifyTokenByRoleAdminOrCandidate,
 };
