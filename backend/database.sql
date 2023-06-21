@@ -31,7 +31,6 @@ CREATE TABLE `candidate` (
   `availability_date` date NOT NULL,
   `skills` varchar(255) NOT NULL,
   `languages` varchar(255) NOT NULL,
-  `is_admin` tinyint NOT NULL,
   `cv_url` varchar(1000) NOT NULL,
   `motivation_letter_url` varchar(1000) NOT NULL,
   `user_id` int NOT NULL,
@@ -47,7 +46,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'Software Engineer','IT','Full Stack Developer','New York','2023-06-30','JavaScript, HTML, CSS','English, Spanish',1,'https://example.com/cv1','https://example.com/motivation_letter1',1),(2,'Marketing Specialist','Marketing','Digital Marketing Manager','London','2023-07-15','SEO, PPC, Social Media Marketing','English, French',0,'https://example.com/cv2','https://example.com/motivation_letter2',2),(3,'Graphic Designer','Design','Graphic Design Lead','San Francisco','2023-07-10','Adobe Creative Suite, Illustration','English',0,'https://example.com/cv3','https://example.com/motivation_letter3',3),(4,'Project Manager','Management','Senior Project Manager','Berlin','2023-07-05','Project Management, Team Leadership','English, German',0,'https://example.com/cv4','https://example.com/motivation_letter4',6);
+INSERT INTO `candidate` VALUES (1,'Software Engineer','IT','Full Stack Developer','New York','2023-06-30','JavaScript, HTML, CSS','English, Spanish','https://example.com/cv1','https://example.com/motivation_letter1',1),(2,'Marketing Specialist','Marketing','Digital Marketing Manager','London','2023-07-15','SEO, PPC, Social Media Marketing','English, French','https://example.com/cv2','https://example.com/motivation_letter2',2),(3,'Graphic Designer','Design','Graphic Design Lead','San Francisco','2023-07-10','Adobe Creative Suite, Illustration','English','https://example.com/cv3','https://example.com/motivation_letter3',3),(4,'Project Manager','Management','Senior Project Manager','Berlin','2023-07-05','Project Management, Team Leadership','English, German','https://example.com/cv4','https://example.com/motivation_letter4',6);
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +91,6 @@ CREATE TABLE `headhunter` (
   `id` int NOT NULL AUTO_INCREMENT,
   `skills_area` varchar(255) DEFAULT NULL,
   `research_sector` varchar(255) DEFAULT NULL,
-  `is_admin` tinyint NOT NULL,
   `user_id` int NOT NULL,
   PRIMARY KEY (`id`,`user_id`),
   KEY `fk_headhunter_user1_idx` (`user_id`),
@@ -106,7 +104,7 @@ CREATE TABLE `headhunter` (
 
 LOCK TABLES `headhunter` WRITE;
 /*!40000 ALTER TABLE `headhunter` DISABLE KEYS */;
-INSERT INTO `headhunter` VALUES (1,'Some Skill Area','Some research sector',0,4),(2,'Some Skill Area','Some research sector',0,5),(3,'Some Skill Area','Some research sector',0,10),(5,'Some Skill Are','Some research sr',1,11);
+INSERT INTO `headhunter` VALUES (1,'Some Skill Area','Some research sector',4),(2,'Some Skill Area','Some research sector',5),(3,'Some Skill Area','Some research sector',10),(5,'Some Skill Are','Some research sr',11);
 /*!40000 ALTER TABLE `headhunter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,13 +117,11 @@ DROP TABLE IF EXISTS `headhunter_companies`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `headhunter_companies` (
   `headhunter_id` int NOT NULL,
-  `headhunter_user_id` int NOT NULL,
   `company_id` int NOT NULL,
-  PRIMARY KEY (`headhunter_id`,`headhunter_user_id`,`company_id`),
+  PRIMARY KEY (`headhunter_id`,`company_id`),
   KEY `fk_headhunter_has_company_company1_idx` (`company_id`),
-  KEY `fk_headhunter_has_company_headhunter1_idx` (`headhunter_id`,`headhunter_user_id`),
-  CONSTRAINT `fk_headhunter_has_company_company1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
-  CONSTRAINT `fk_headhunter_has_company_headhunter1` FOREIGN KEY (`headhunter_id`, `headhunter_user_id`) REFERENCES `headhunter` (`id`, `user_id`)
+  KEY `fk_headhunter_has_company_headhunter1_idx` (`headhunter_id`),
+  CONSTRAINT `fk_headhunter_has_company_company1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -248,4 +244,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-21 12:25:05
+-- Dump completed on 2023-06-21 15:57:25
