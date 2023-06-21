@@ -1,7 +1,7 @@
 import React from "react";
 import Root from "./root";
 import Home from "./home";
-import ErrorPage from "../pages/errorPage";
+import ErrorPage from "./errorPage";
 
 const Routes = [
   {
