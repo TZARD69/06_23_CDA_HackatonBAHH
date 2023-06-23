@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Navbar from "../components/navbar";
 
 import logo from "../assets/Ressources/logo-externatic.png";
 import image1 from "../assets/Ressources/image1.svg";
@@ -9,7 +8,6 @@ import image2 from "../assets/Ressources/image2.svg";
 function Home() {
   return (
     <div>
-      <Navbar />
       <Box sx={{ p: 0.5, border: "1.5px solid black", borderRadius: 16 }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
@@ -40,7 +38,12 @@ function Home() {
             Notre réseau est une force et nous y travaillons sans relâche. Notre
             expérience nous permet d’identifier les vrais besoins d’une
             entreprise et de ceux qui la rejoignent.
-          </div>{" "}
+          </div>
+          <img
+            src={image2}
+            alt="people home page2"
+            style={{ transform: "scale(1.0)" }}
+          />
           <h2>Notre durabilité</h2>
           <div>
             Notre challenge est de trouver l’équipe qui fonctionnera ensemble de
