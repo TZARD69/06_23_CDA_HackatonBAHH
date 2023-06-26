@@ -135,6 +135,9 @@ export default function Navbar() {
             sx={{
               mt: "20px",
               mr: "-120px",
+              display: "flex",
+              flexDirection: "row",
+              gap: "3rem",
             }}
           >
             <Button
@@ -143,6 +146,7 @@ export default function Navbar() {
                 backgroundColor: "black",
                 width: "120px",
                 borderRadius: 35,
+                height: "50%",
               }}
             >
               CANDIDAT
@@ -163,6 +167,7 @@ export default function Navbar() {
                 backgroundColor: "black",
                 width: "120px",
                 borderRadius: 35,
+                height: "50%",
               }}
             >
               ENTREPRISE
