@@ -7,10 +7,21 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import InputLabel from "@mui/material/InputLabel";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 import logo from "../assets/Ressources/logo-externatic.png";
+
+const options = ["Candidate", "Companies", "Head Hunters", "Login", "Logout"];
+const ITEM_HEIGHT = 48;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,11 +66,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <Box>
       <Box sx={{ width: "100%" }}>
-        <img src={logo} alt="logo entreprise externatic" />
-        <Typography variant="h3">Plus qu'un cabinet de recrutement</Typography>
         <Box
           sx={{
             display: "flex",
@@ -67,13 +89,118 @@ export default function Navbar() {
             justifyContent: "space-around",
           }}
         >
-          <Box sx={{ width: "100%", maxWidth: 350, marginLeft: "20px" }}>
+          <Box>
+            <MenuRoundedIcon
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? "long-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+              sx={{ width: "50px", height: "50px", mt: "20px", ml: "-140px" }}
+            >
+              <MoreVertIcon />
+            </MenuRoundedIcon>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "20ch",
+                },
+              }}
+            >
+              {options.map((option) => (
+                <MenuItem
+                  key={option}
+                  selected={option === "Pyxis"}
+                  onClick={handleClose}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <img
+            src={logo}
+            alt="logo externatic"
+            style={{ width: "600px", height: "auto" }}
+          />
+          <Box sx={{ mt: "20px", mr: "-120px" }}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "black",
+                width: "120px",
+                borderRadius: 35,
+              }}
+            >
+              CANDIDATE
+            </Button>
+            {/* <Button
+              variant="contained"
+              style={{
+                backgroundColor: "black",
+                width: "120px",
+                borderRadius: 35,
+              }}
+            >
+              COMPANIES
+            </Button> */}
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "black",
+                width: "120px",
+                borderRadius: 35,
+              }}
+            >
+              Login
+            </Button>
+            {/* <Button
+              variant="contained"
+              style={{
+                backgroundColor: "black",
+                width: "120px",
+                borderRadius: 35,
+              }}
+            >
+              Logout
+            </Button> */}
+          </Box>
+        </Box>
+        <Typography
+          variant="h3"
+          sx={{ textAlign: "center", fontSize: 40, mb: "25px" }}
+        >
+          Plus qu'un cabinet de recrutement
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginLeft: "140px",
+            marginRight: "140px",
+          }}
+        >
+          <Box
+            sx={{
+              width: "100%",
+              maxWidth: 350,
+            }}
+          >
             <AppBar
               position="static"
               sx={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-around",
                 backgroundColor: "lightGrey",
               }}
             >
@@ -113,25 +240,86 @@ export default function Navbar() {
               </Toolbar>
             </AppBar>
           </Box>
-          <Button variant="contained" style={{ backgroundColor: "#CA2061" }}>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#CA2061", width: "200px" }}
+          >
             SEARCH
           </Button>
         </Box>
         <Box>
-          <FormControlLabel required control={<Checkbox />} label="CDD" />
-          <FormControlLabel required control={<Checkbox />} label="CDI" />
-          <FormControlLabel
-            required
-            control={<Checkbox />}
-            label="Internship"
-          />
-          <FormControlLabel
-            required
-            control={<Checkbox />}
-            label="Apprenticeship"
-          />
-          <FormControlLabel required control={<Checkbox />} label="Part-time" />
-          <FormControlLabel required control={<Checkbox />} label="Full-time" />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              mt: "25px",
+              mb: "25px",
+              marginLeft: "140px",
+              marginRight: "140px",
+            }}
+          >
+            <FormControlLabel control={<Checkbox />} label="CDD" />
+            <FormControlLabel control={<Checkbox />} label="CDI" />
+            <FormControlLabel control={<Checkbox />} label="Internship" />
+            <FormControlLabel control={<Checkbox />} label="Apprenticeship" />
+            <FormControlLabel control={<Checkbox />} label="Part-time" />
+            <FormControlLabel control={<Checkbox />} label="Full-time" />
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+              <InputLabel id="demo-simple-select-label">Salary</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="Salary"
+                onChange={handleChange}
+                sx={{ borderRadius: 2.5 }}
+              >
+                <MenuItem value={10}>2500€-3000€</MenuItem>
+                <MenuItem value={20}>3500€-4000€</MenuItem>
+                <MenuItem value={30}>4500€-5000€</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginLeft: "340px",
+            marginRight: "340px",
+          }}
+        >
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#CA2061", width: "200px" }}
+          >
+            Companies
+          </Button>
+          <FormControl sx={{ width: "200px" }}>
+            <InputLabel id="demo-select-small-label">Job Field</InputLabel>
+            <Select
+              labelId="demo-select-small-label"
+              id="demo-select-small"
+              value={age}
+              label="Job Field"
+              onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>IT</MenuItem>
+              <MenuItem value={20}>Marketing</MenuItem>
+              <MenuItem value={30}>Industry</MenuItem>
+            </Select>
+          </FormControl>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#CA2061", width: "200px" }}
+          >
+            Job Offers
+          </Button>
         </Box>
       </Box>
     </Box>
