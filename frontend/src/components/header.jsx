@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import InputLabel from "@mui/material/InputLabel";
@@ -80,7 +79,7 @@ export default function Navbar() {
     setAge(event.target.value);
   };
   return (
-    <Box>
+    <Box sx={{ mb: "3rem" }}>
       <Box sx={{ width: "100%" }}>
         <Box
           sx={{
@@ -132,7 +131,12 @@ export default function Navbar() {
             alt="logo externatic"
             style={{ width: "600px", height: "auto" }}
           />
-          <Box sx={{ mt: "20px", mr: "-120px" }}>
+          <Box
+            sx={{
+              mt: "20px",
+              mr: "-120px",
+            }}
+          >
             <Button
               variant="contained"
               style={{
@@ -141,7 +145,7 @@ export default function Navbar() {
                 borderRadius: 35,
               }}
             >
-              CANDIDATE
+              CANDIDAT
             </Button>
             {/* <Button
               variant="contained"
@@ -161,7 +165,7 @@ export default function Navbar() {
                 borderRadius: 35,
               }}
             >
-              Login
+              ENTREPRISE
             </Button>
             {/* <Button
               variant="contained"
@@ -210,7 +214,7 @@ export default function Navbar() {
                     <SearchIcon />
                   </SearchIconWrapper>
                   <StyledInputBase
-                    placeholder="Job offers"
+                    placeholder="Offres d'emploi"
                     inputProps={{ "aria-label": "search" }}
                   />
                 </Search>
@@ -233,7 +237,7 @@ export default function Navbar() {
                     <SearchIcon />
                   </SearchIconWrapper>
                   <StyledInputBase
-                    placeholder="Location"
+                    placeholder="Où"
                     inputProps={{ "aria-label": "search" }}
                   />
                 </Search>
@@ -244,7 +248,7 @@ export default function Navbar() {
             variant="contained"
             style={{ backgroundColor: "#CA2061", width: "200px" }}
           >
-            SEARCH
+            RECHERCHE
           </Button>
         </Box>
         <Box>
@@ -318,7 +322,7 @@ export default function Navbar() {
             variant="contained"
             style={{ backgroundColor: "#CA2061", width: "200px" }}
           >
-            Job Offers
+            Offres d'emploi
           </Button>
         </Box>
       </Box>
