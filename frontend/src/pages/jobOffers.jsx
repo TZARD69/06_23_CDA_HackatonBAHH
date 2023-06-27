@@ -15,7 +15,9 @@ function jobOffers() {
           textAlign: "justify",
           height: "50rem",
         }}
-      />
+      >
+        <div />
+      </Box>
       <Box
         sx={{
           p: 0.5,

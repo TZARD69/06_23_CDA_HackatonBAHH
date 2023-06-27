@@ -270,17 +270,17 @@ export default function Navbar() {
           >
             <FormControlLabel control={<Checkbox />} label="CDD" />
             <FormControlLabel control={<Checkbox />} label="CDI" />
-            <FormControlLabel control={<Checkbox />} label="Internship" />
-            <FormControlLabel control={<Checkbox />} label="Apprenticeship" />
-            <FormControlLabel control={<Checkbox />} label="Part-time" />
-            <FormControlLabel control={<Checkbox />} label="Full-time" />
+            <FormControlLabel control={<Checkbox />} label="Stage" />
+            <FormControlLabel control={<Checkbox />} label="Alternance" />
+            <FormControlLabel control={<Checkbox />} label="Temps partiel" />
+            <FormControlLabel control={<Checkbox />} label="Télé-travail" />
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <InputLabel id="demo-simple-select-label">Salary</InputLabel>
+              <InputLabel id="demo-simple-select-label">Salaire</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={age}
-                label="Salary"
+                label="Salaire"
                 onChange={handleChange}
                 sx={{ borderRadius: 2.5 }}
               >
@@ -304,10 +304,10 @@ export default function Navbar() {
             variant="contained"
             style={{ backgroundColor: "#CA2061", width: "200px" }}
           >
-            Companies
+            Entreprises
           </Button>
           <FormControl sx={{ width: "200px" }}>
-            <InputLabel id="demo-select-small-label">Job Field</InputLabel>
+            <InputLabel id="demo-select-small-label">Secteur</InputLabel>
             <Select
               labelId="demo-select-small-label"
               id="demo-select-small"
@@ -315,12 +315,11 @@ export default function Navbar() {
               label="Job Field"
               onChange={handleChange}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>IT</MenuItem>
-              <MenuItem value={20}>Marketing</MenuItem>
-              <MenuItem value={30}>Industry</MenuItem>
+              <MenuItem value="">Cyber-securité</MenuItem>
+              <MenuItem value={10}>Big Data</MenuItem>
+              <MenuItem value={20}>Inteligence Artificielle</MenuItem>
+              <MenuItem value={30}>Applications web & mobile</MenuItem>
+              <MenuItem value={30}>Systèmes embarqués</MenuItem>
             </Select>
           </FormControl>
           <Button
