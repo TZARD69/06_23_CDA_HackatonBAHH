@@ -7,10 +7,14 @@ const router = express.Router();
 const userControllers = require("./controllers/UserControllers");
 const smartphoneControllers = require("./controllers/SmartphoneController");
 
+// Validators
+
+const { validateUser, validateSmartphone } = require("./services/validators");
+
 // POST Routes
 
-router.post("/users", userControllers.add);
-router.post("/smartphones", smartphoneControllers.add);
+router.post("/users", validateUser, userControllers.add);
+router.post("/smartphones", validateSmartphone, smartphoneControllers.add);
 
 // GET Routes
 
@@ -21,8 +25,8 @@ router.get("/smartphones/:id", smartphoneControllers.read);
 
 // PUT Routes
 
-router.put("/users/:id", userControllers.edit);
-router.put("/smartphones/:id", smartphoneControllers.edit);
+router.put("/users/:id", validateUser, userControllers.edit);
+router.put("/smartphones/:id", validateSmartphone, smartphoneControllers.edit);
 
 // DELETE Routes
 
