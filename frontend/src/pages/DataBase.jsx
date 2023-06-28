@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-const DataBase = () => {
-    return (
-        <div>
-            <p> BDD</p>
-        </div>
-    );
-};
+function DataBase() {
+  return (
+    <div>
+      <p> BDD</p>
+    </div>
+  );
+}
 
 export default DataBase;
