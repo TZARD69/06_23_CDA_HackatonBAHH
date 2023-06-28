@@ -6,14 +6,20 @@ const router = express.Router();
 
 const userControllers = require("./controllers/UserControllers");
 const smartphoneControllers = require("./controllers/SmartphoneController");
+const loginController = require("./controllers/authController");
 
 // Validators
 
 const { validateUser, validateSmartphone } = require("./services/validators");
 
+// Hashing
+
+const { hashPassword } = require("./services/passwordHelper");
+
 // POST Routes
 
-router.post("/users", validateUser, userControllers.add);
+router.post("/login", loginController.login);
+router.post("/users", validateUser, hashPassword, userControllers.add);
 router.post("/smartphones", validateSmartphone, smartphoneControllers.add);
 
 // GET Routes
