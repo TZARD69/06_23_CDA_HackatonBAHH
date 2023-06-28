@@ -6,26 +6,26 @@ class UserManager extends AbstractManager {
   }
 
   insert(user) {
-    return this.database.query(
+    return this.connection.query(
       `insert into ${this.table} (firstname, lastname, email, password, role) values (?, ?, ?, ?, ?)`,
       [
         user.firstname,
         user.lastname,
         user.email,
-        user.hashedPassword,
+        user.password,
         JSON.stringify(user.role),
       ]
     );
   }
 
   update(user) {
-    return this.database.query(
+    return this.connection.query(
       `update ${this.table} set firstname = ?, lastname = ?, email = ?, password = ?, role = ? where id = ?`,
       [
         user.firstname,
         user.lastname,
         user.email,
-        user.hashedPassword,
+        user.password,
         JSON.stringify(user.role),
         user.id,
       ]
@@ -33,7 +33,7 @@ class UserManager extends AbstractManager {
   }
 
   findOneByEmail(email) {
-    return this.database.query(
+    return this.connection.query(
       `select * from ${this.table} where email = ?`,
       email
     );

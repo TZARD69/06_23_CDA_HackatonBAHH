@@ -6,12 +6,11 @@ class SmartphoneManager extends AbstractManager {
   }
 
   insert(smartphone) {
-    return this.database.query(
-      `insert into ${this.table} (model, os, email, ram_memory, storage, screen_size, network, charger) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+    return this.connection.query(
+      `insert into ${this.table} (model, os, ram_memory, storage, screen_size, network, charger) values (?, ?, ?, ?, ?, ?, ?)`,
       [
         smartphone.model,
         smartphone.os,
-        smartphone.email,
         smartphone.ram_memory,
         smartphone.storage,
         smartphone.screen_size,
@@ -22,12 +21,11 @@ class SmartphoneManager extends AbstractManager {
   }
 
   update(smartphone) {
-    return this.database.query(
-      `update ${this.table} set model = ?, os = ?, email = ?, ram_memory = ?, storage = ? , screen_size = ?, network = ?, charger = ? where id = ?`,
+    return this.connection.query(
+      `update ${this.table} set model = ?, os = ?, ram_memory = ?, storage = ? , screen_size = ?, network = ?, charger = ? where id = ?`,
       [
         smartphone.model,
         smartphone.os,
-        smartphone.email,
         smartphone.ram_memory,
         smartphone.storage,
         smartphone.screen_size,

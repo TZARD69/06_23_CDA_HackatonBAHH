@@ -22,11 +22,11 @@ router.get("/smartphones/:id", smartphoneControllers.read);
 // PUT Routes
 
 router.put("/users/:id", userControllers.edit);
-router.put("/smartphones/:id", userControllers.edit);
+router.put("/smartphones/:id", smartphoneControllers.edit);
 
 // DELETE Routes
 
 router.delete("/users/:id", userControllers.destroy);
-router.delete("/smartphones/:id", userControllers.destroy);
+router.delete("/smartphones/:id", smartphoneControllers.destroy);
 
 module.exports = router;
