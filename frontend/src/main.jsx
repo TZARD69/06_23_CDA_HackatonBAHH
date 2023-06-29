@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@mui/material";
+import Summary from "@pages/Summary";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/resume",
+        element: <Summary/>,
       },
     ],
   },
