@@ -14,7 +14,6 @@ import ListItemText from "@mui/material/ListItemText";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "../style/navbar.css";
 
-
 export default function ButtonAppBar() {
   const drawerWidth = "100%";
   const drawerheight = "100%";
@@ -50,6 +49,7 @@ export default function ButtonAppBar() {
   return (
     <Box>
       <AppBar
+        position="sticky"
         className="navBar"
         sx={{ bgcolor: "rgba(249, 249, 249, 1)", boxShadow: 1 }}
       >
@@ -57,7 +57,6 @@ export default function ButtonAppBar() {
           <div>
             <img className="logo1" src={logo1} alt="logo" />
           </div>
-
 
           <IconButton>
             <img src={profil} alt="profil" className="icon-profil" />
