@@ -1,8 +1,14 @@
-import { Button, Typography } from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
+import React from 'react';
+import { Typography, Button } from "@mui/material";
+import CardMedia from '@mui/material/CardMedia';
+import ModalAddPhone from "@components/ModalAddPhone";
 import { Box } from "@mui/system";
 
-export default function Home() {
+export default function Home({form}) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}>
       <Typography variant="h3" sx={{ fontWeight: 500, p: "5px" }}>
@@ -14,15 +20,21 @@ export default function Home() {
         quelques instants.
       </Typography>
       <Box sx={{ p: "20px" }}>
+
         <Button
+         open={open} handleClose={handleClose} 
+         formular={form}
           variant="contained"
           sx={{
+            textAlign:"center",
             borderRadius: "16px",
             color: "white",
             backgroundColor: "#E62460",
           }}
         >
+          <ModalAddPhone />
           Ajouter un smartphone
+          
         </Button>
       </Box>
       <CardMedia
@@ -41,6 +53,7 @@ export default function Home() {
         </Typography>
         <Box sx={{ p: "20px" }}>
           <Button
+            onClick={handleOpen}
             variant="contained"
             sx={{
               width: "100px",

@@ -1,0 +1,25 @@
+.navBar {
+  display: flex;
+  height: auto;
+  padding: 20px 21px 20px 21px;
+  gap: 54px;
+  background-color: rgba(249, 249, 249, 1);
+  box-shadow: 0 3px 16px -9px rgba(0, 0, 0, 0.3);
+}
+.logo1 {
+  width: 147px;
+  height: 49px;
+}
+.icon-profil {
+  width: 39px;
+  height: 39px;
+}
+.menuBurger {
+  width: 48px;
+  height: 38px;
+}
+.logo-footer {
+  width: 17rem;
+  display: flex;
+  margin: auto;
+}
