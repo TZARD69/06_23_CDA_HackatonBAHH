@@ -1,5 +1,7 @@
 import Home from "@pages/Home";
 import AddPhone from "@pages/AddPhone";
+import { ThemeProvider } from "@mui/material";
+import { mainTheme } from "./theme";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -18,7 +20,7 @@ const router = createBrowserRouter([
       // pour l'outlet (afficher les children ici) et navbar reste fix
       {
         path: "/acceuil",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/addphone",
@@ -42,6 +44,8 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={mainTheme}>
+     <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
