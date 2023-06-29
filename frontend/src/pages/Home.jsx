@@ -20,15 +20,21 @@ export default function Home({form}) {
         quelques instants.
       </Typography>
       <Box sx={{ p: "20px" }}>
+
         <Button
+         open={open} handleClose={handleClose} 
+         formular={form}
           variant="contained"
           sx={{
+            textAlign:"center",
             borderRadius: "16px",
             color: "white",
             backgroundColor: "#E62460",
           }}
         >
+          <ModalAddPhone />
           Ajouter un smartphone
+          
         </Button>
       </Box>
       <CardMedia
@@ -66,7 +72,6 @@ export default function Home({form}) {
         image="./src/assets/home2.png"
         alt="home img"
       />
-      <ModalAddPhone open={open} handleClose={handleClose} formular={form} />
     </Box>
   );
 }
