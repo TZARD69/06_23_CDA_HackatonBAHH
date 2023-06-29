@@ -1,16 +1,24 @@
+
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-use-before-define */
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import TextField from "@mui/material/TextField";
+
+
 import Autocomplete from "@mui/material/Autocomplete";
-import Stack from "@mui/material/Stack";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+
+
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Summary from '@pages/Summary';
+
 
 const style = {
   position: "absolute",
@@ -25,14 +33,30 @@ const style = {
 };
 
 export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const defaultProps = {
-    options: top100Films,
-    getOptionLabel: (option) => option.title,
+  const [showSummary, setShowSummary] = useState(false);
+
+  const [patientForm, setPatientForm] = useState({
+    model: "",
+    os: "",
+    ram_memory: "",
+    storage: "",
+    screen_size: "",
+    network: "",
+    charger: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Effectue les actions souhaitées avec les données du formulaire
+    console.log(patientForm);
+    setShowSummary(true);
+    // ...
   };
+
 
   return (
     <div>
@@ -51,70 +75,85 @@ export default function BasicModal() {
             Remplissez les champs ci-dessous pour évaluer le smartphone:
           </Typography>
           <Stack spacing={2} sx={{ width: 250, ml: "28px" }}>
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Système d'exploitation"
-                  variant="standard"
-                />
-              )}
+            <TextField
+              label="Model"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.model}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, model: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField {...params} label="RAM" variant="standard" />
-              )}
+            <TextField
+              label="os"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.os}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, os: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField {...params} label="Mémoire" variant="standard" />
-              )}
+            <TextField
+              label="ram_memory"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.ram_memory}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, ram_memory: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField {...params} label="Écran" variant="standard" />
-              )}
+            <TextField
+              label="storage"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.storage}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, storage: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField {...params} label="Réseaux" variant="standard" />
-              )}
+            <TextField
+              label="screen_size"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.screen_size}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, screen_size: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField {...params} label="Modèle" variant="standard" />
-              )}
+            <TextField
+              label="network"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              type="text"
+              fullWidth
+              required
+              margin="normal"
+              value={patientForm.network}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, network: e.target.value })
+              }
             />
-            <Autocomplete
-              {...defaultProps}
-              id="disable-close-on-select"
-              disableCloseOnSelect
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Taille de la RAM"
-                  variant="standard"
-                />
-              )}
-            />
+
             <Autocomplete
               {...defaultProps}
               id="disable-close-on-select"
@@ -131,6 +170,7 @@ export default function BasicModal() {
                 <TextField {...params} label="Pondération" variant="standard" />
               )}
             />
+
             <Box sx={{ mariginTop: "20px" }}>
               <Typography
                 variant="body2"
@@ -153,6 +193,7 @@ export default function BasicModal() {
             </RadioGroup>
           </Stack>
           <Button
+
             variant="contained"
             sx={{
               width: "290px",
@@ -165,11 +206,24 @@ export default function BasicModal() {
           >
             Ajouter
           </Button>
+
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={handleSubmit}
+          sx={{ mt: 3, mb: 2, backgroundColor:"#00ACB0", borderRadius:"20px"}}
+        >
+          Envoyer
+        </Button>
+
         </Box>
       </Modal>
+      {showSummary && <Summary formData={patientForm} />}
     </div>
   );
 }
+
 
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
@@ -298,3 +352,4 @@ const top100Films = [
   { title: "3 Idiots", year: 2009 },
   { title: "Monty Python and the Holy Grail", year: 1975 },
 ];
+

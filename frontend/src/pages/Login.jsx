@@ -28,9 +28,8 @@ export default function Login() {
         >
           <div>
             <Typography level="h4" component="h1">
-              <b>bienvenue!</b>
+              <b>Bienvenue!</b>
             </Typography>
-            <Typography level="body2">Se connecter</Typography>
           </div>
           <FormControl>
             <FormLabel>Email</FormLabel>
@@ -38,7 +37,7 @@ export default function Login() {
               // html input attribute
               name="email"
               type="email"
-              placeholder="johndoe@email.com"
+              placeholder="majid.beneddine@email.com"
             />
           </FormControl>
           <FormControl>
@@ -47,11 +46,11 @@ export default function Login() {
               // html input attribute
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="mot de passe"
             />
           </FormControl>
 
-          <Button sx={{ mt: 1 /* margin top */ }}>Valider</Button>
+          <Button sx={{ mt: 1 /* margin top */ }}>Se connecter</Button>
         </Sheet>
       </main>
     </CssVarsProvider>
