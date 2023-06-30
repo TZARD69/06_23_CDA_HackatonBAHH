@@ -1,0 +1,30 @@
+.bgcolor-Faq {
+  margin-bottom: -20px;
+  height: 200px;
+  background-color: rgba(235, 235, 235, 1);
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.Title-faq {
+  color: rgba(230, 36, 96, 1);
+  font-size: 35px;
+  margin-left: 10px;
+}
+.group {
+  margin-top: -180px;
+  margin-left: 240px;
+}
+.h-faq {
+  color: rgba(0, 39, 67, 1);
+  margin-top: -30px;
+}
+.rectangle {
+  width: 100%;
+}
+.question {
+  margin-top: 50px;
+}
+.question1 {
+  margin-bottom: 30px;
+}

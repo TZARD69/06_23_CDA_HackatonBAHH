@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { Typography, Button } from "@mui/material";
-import CardMedia from '@mui/material/CardMedia';
+import CardMedia from "@mui/material/CardMedia";
 import ModalAddPhone from "@components/ModalAddPhone";
 import { Box } from "@mui/system";
 
-export default function Home({form}) {
+export default function Home({ form }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -20,13 +20,13 @@ export default function Home({form}) {
         quelques instants.
       </Typography>
       <Box sx={{ p: "20px" }}>
-
         <Button
-         open={open} handleClose={handleClose} 
-         formular={form}
+          open={open}
+          handleClose={handleClose}
+          formular={form}
           variant="contained"
           sx={{
-            textAlign:"center",
+            textAlign: "center",
             borderRadius: "16px",
             color: "white",
             backgroundColor: "#E62460",
@@ -34,7 +34,6 @@ export default function Home({form}) {
         >
           <ModalAddPhone />
           Ajouter un smartphone
-          
         </Button>
       </Box>
       <CardMedia
