@@ -1,13 +1,7 @@
-
+import React, {useState} from 'react';
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-use-before-define */
-
-
-import Autocomplete from "@mui/material/Autocomplete";
-
-
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -17,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Summary from '@pages/Summary';
+import { useNavigate } from 'react-router-dom';
 
 
 const style = {
@@ -37,7 +31,7 @@ export default function BasicModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [showSummary, setShowSummary] = useState(false);
+  const navigate = useNavigate();
 
   const [patientForm, setPatientForm] = useState({
     model: "",
@@ -51,10 +45,8 @@ export default function BasicModal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Effectue les actions souhaitées avec les données du formulaire
-    console.log(patientForm);
-    setShowSummary(true);
-    // ...
+    const path = `/resumer`;
+    navigate(path);
   };
 
 
@@ -70,13 +62,13 @@ export default function BasicModal() {
         <Box sx={style}>
           <Typography
             variant="h6"
-            sx={{ fontWeight: 500, p: "10px", ml: "28px", marginTop: "15px" }}
+            sx={{ fontWeight: 500, p: "10px", ml: "10px", marginTop: "15px" }}
           >
             Remplissez les champs ci-dessous pour évaluer le smartphone:
           </Typography>
-          <Stack spacing={2} sx={{ width: 250, ml: "28px" }}>
+          <Stack spacing={2} sx={{ width: 250, ml: "10px" }}>
             <TextField
-              label="Model"
+              label="Modèle"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -89,7 +81,7 @@ export default function BasicModal() {
               }
             />
             <TextField
-              label="os"
+              label="Système d'exploitation"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -102,7 +94,7 @@ export default function BasicModal() {
               }
             />
             <TextField
-              label="ram_memory"
+              label="Taille de la RAM"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -115,7 +107,7 @@ export default function BasicModal() {
               }
             />
             <TextField
-              label="storage"
+              label="Stockage"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -128,7 +120,7 @@ export default function BasicModal() {
               }
             />
             <TextField
-              label="screen_size"
+              label="Taille d'écran"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -141,7 +133,7 @@ export default function BasicModal() {
               }
             />
             <TextField
-              label="network"
+              label="Réseau"
               variant="outlined"
               InputLabelProps={{ shrink: true }}
               type="text"
@@ -186,10 +178,13 @@ export default function BasicModal() {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              value={patientForm.charger}
+              onChange={(e) =>
+                setPatientForm({ ...patientForm, charger: e.target.value })}
               sx={{ display: "inline-flex" }}
             >
-              <FormControlLabel value="yes" control={<Radio />} label="Oui" />
-              <FormControlLabel value="no" control={<Radio />} label="Non" />
+              <FormControlLabel value="Oui" control={<Radio />} label="Oui" />
+              <FormControlLabel value="Non" control={<Radio />} label="Non" />
             </RadioGroup>
           </Stack>
           <Button
@@ -219,7 +214,6 @@ export default function BasicModal() {
 
         </Box>
       </Modal>
-      {showSummary && <Summary formData={patientForm} />}
     </div>
   );
 }

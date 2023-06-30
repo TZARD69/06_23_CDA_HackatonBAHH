@@ -32,7 +32,7 @@ export default function ButtonAppBar() {
     {
       id: 0,
       text: "Ajouter un smartphone",
-      link: "/addphone",
+      link: "/acceuil",
     },
     {
       id: 1,

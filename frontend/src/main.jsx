@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/resume",
+        path: "/resumer",
         element: <Summary/>,
       },
     ],
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={mainTheme}>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );
