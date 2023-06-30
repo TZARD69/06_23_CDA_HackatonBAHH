@@ -37,7 +37,7 @@ export default function Login() {
               // html input attribute
               name="email"
               type="email"
-              placeholder="majid.beneddine@email.com"
+              placeholder="majid.beneddine@goyavelebrave.com"
             />
           </FormControl>
           <FormControl>

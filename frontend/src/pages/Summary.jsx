@@ -1,16 +1,40 @@
 import React from 'react';
+import { Card, CardContent, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 
-function Summary({ formData }) {
+
+function Summary({ patientForm }) {
+
   return (
-    <div>
-      <h2>Récapitulatif des données</h2>
-      <p>Modèle : {formData.model}</p>
-      <p>Système d'exploitation : {formData.os}</p>
-      <p>Mémoire RAM : {formData.ram_memory}</p>
-      <p>Mémoire Taille écran : {formData.screen_size}</p>
-      <p>Mémoire network : {formData.network}</p>
-      <p>Mémoire stocage : {formData.storage}</p>
-    </div>
+    <Card>
+      <CardContent sx={{p: 5, width: "30px"}}>
+        <Typography variant="h4" sx={{fontWeight:"medium", marginBottom:"27px"}}>Récapitulatif des données</Typography>
+
+        <Box sx={{}}>
+          <Typography>Modèle:</Typography>
+          <Typography>{patientForm?.model}</Typography>
+
+          <Typography>Système d'exploitation: </Typography>
+          <Typography>{patientForm?.os}</Typography>
+
+          <Typography>Mémoire RAM:</Typography>
+          <Typography>{patientForm?.ram_memory}</Typography>
+
+          <Typography>Taille d'écran:</Typography>
+          <Typography>{patientForm?.screen_size}</Typography>
+
+          <Typography>Réseau:</Typography>
+          <Typography>{patientForm?.network}</Typography>
+
+          <Typography>Stockage:</Typography>
+          <Typography>{patientForm?.storage}</Typography>
+
+          <Typography>Chargeur:</Typography>
+          <Typography>{patientForm?.charger}</Typography>
+
+        </Box>
+      </CardContent>
+    </Card>
   );
 }
 

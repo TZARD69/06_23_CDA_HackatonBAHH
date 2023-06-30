@@ -33,7 +33,7 @@ export default function ButtonAppBar() {
     {
       id: 0,
       text: "Ajouter un smartphone",
-      link: "/addphone",
+      link: "/acceuil",
     },
     {
       id: 1,
@@ -49,7 +49,7 @@ export default function ButtonAppBar() {
 
   return (
     <Box>
-      <AppBar
+      <AppBar position="sticky"
         className="navBar"
         sx={{ bgcolor: "rgba(249, 249, 249, 1)", boxShadow: 1 }}
       >

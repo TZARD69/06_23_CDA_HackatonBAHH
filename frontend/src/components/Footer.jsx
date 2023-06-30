@@ -3,6 +3,10 @@ import React from "react";
 
 function Footer() {
   const footerStyles = {
+    position:"fixed",
+    bottom:0,
+    left:0,
+    right:0,
     backgroundColor: "#002743",
     color: "white",
     padding: "30px",
